@@ -140,7 +140,7 @@ executors:
       - image : ghcr.io/facebookincubator/velox-dev:check-avx
   macos-intel:
     macos:
-      xcode: "12.5.1"
+      xcode: "13.2.1"
     resource_class: large
   macos-m1:
     macos:
