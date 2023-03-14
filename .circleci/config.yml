@@ -141,7 +141,7 @@ executors:
   macos-intel:
     macos:
       xcode: "13.2.1"
-    resource_class: large
+    resource_class: macos.x86.medium.gen2
   macos-m1:
     macos:
       xcode: "14.2.0"
