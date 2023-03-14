@@ -18,50 +18,6 @@ workflows:
   version: 2
   dist-compile:
     jobs:
-      - linux-build
-      - linux-build-options
-      - linux-adapters
-      - macos-build:
-          matrix:
-            parameters:
-              os: [macos-intel, macos-m1]
-      - format-check
-      - header-check
-
-  # Daily documentation update
-  nightly:
-    triggers:
-      - schedule:
-         cron: "0 3 * * *"
-         filters:
-           branches:
-             only:
-               - main
-    jobs:
-      - doc-gen-job
-      - linux-presto-fuzzer-run
-      - linux-spark-fuzzer-run
-      - linux-aggregate-fuzzer-run
-      - linux-join-fuzzer-run
-      - docker-compose-ubuntu-cpp
-      - docker-compose-centos-cpp
-      - docker-compose-presto-native
-
-
-  # Hourly build on weekdays
-  weekday:
-    triggers:
-      - schedule:
-          cron: "0 0,4,8,12,16,20 * * 1-5"
-          filters:
-            branches:
-              only:
-                - main
-    jobs:
-      - linux-build
-      - linux-build-release
-      - linux-build-options
-      - linux-adapters
       - macos-build:
           matrix:
             parameters:
